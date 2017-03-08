@@ -219,6 +219,9 @@ cmake ..
 
 The following flags change the behavior of the compiled code:
 
+* `cmake .. -DCMAKE_INSTALL_PREFIX=/install/path`
+Specifies the install location from the provided install prefix path.
+
 * `cmake .. -DMULTICORE=ON`
 Enables parallelized execution using OpenMP. This will utilize all cores on the CPU for heavyweight parallelizable operations such as FFT.
 
