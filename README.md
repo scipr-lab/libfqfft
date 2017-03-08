@@ -211,16 +211,9 @@ Finally, follow the build guide for [libff](https://github.com/scipr-lab/libff).
 To compile, starting at the project root directory, create the Makefile:
 
 ```
-mkdir build && cd build && cmake ..
+mkdir build && cd build
+cmake ..
 ```
-
-Then, to compile the library and profiler, run:
-
-```
-make
-```
-
-The above makes the `build` folder and compiles the profiling executables to the project root directory. To remove all executables, from the build folder, run `make clean`.
 
 #### Options
 
@@ -235,13 +228,22 @@ Passes specified optimizations flags to compiler.
 * `cmake .. -PROF_DOUBLE=ON`
 Enables profiling with Double (default: ON). If the flag is turned off, profiling will use `Fr<edwards_pp>`.
 
+Then, to compile the library and profiler, run:
+
+```
+make
+```
+
+The above makes the `build` folder and compiles the profiling executables to the project root directory. To remove all executables, from the build folder, run `make clean`.
+
 ### Using libfqfft as a library
 
-To build and install the libfqfft library:
+To install the libfqfft library:
+```
+make install
+```
 
-	$ DESTDIR=/install/path make install
-
-This will install the requisite headers into /install/path/include; so your application should be compiled using -I/install/path/include.
+Depending on the specified install location from the optional `-DCMAKE_INSTALL_PREFIX`, this will install the requisite headers into /install/path/include; so your application should be compiled using -I/install/path/include.
 
 ## Tutorials
 
