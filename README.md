@@ -231,6 +231,9 @@ Passes specified optimizations flags to compiler.
 * `cmake .. -PROF_DOUBLE=ON`
 Enables profiling with Double (default: ON). If the flag is turned off, profiling will use `Fr<edwards_pp>`.
 
+* `cmake .. -DWITH_PROCPS=OFF`
+Links libprocps for usage in memory profiling. If this flag is turned off, memory profiling will not work.
+
 Then, to compile the library and profiler, run:
 
 ```
