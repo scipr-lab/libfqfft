@@ -1,5 +1,3 @@
-include_directories(.)
-
 install(
   DIRECTORY "" DESTINATION "include/libfqfft"
   FILES_MATCHING
