@@ -20,7 +20,7 @@
 #include <omp.h>
 #endif
 
-#include "algebra/fields/field_utils.hpp"
+#include <libff/algebra/fields/field_utils.hpp>
 
 #include "../../tools/exceptions.hpp"
 

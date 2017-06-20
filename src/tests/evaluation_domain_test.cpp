@@ -9,7 +9,7 @@
 #include <stdint.h>
 #include <vector>
 
-#include "algebra/curves/mnt/mnt4/mnt4_pp.hpp"
+#include <libff/algebra/curves/mnt/mnt4/mnt4_pp.hpp>
 
 #include "../evaluation_domain/evaluation_domain.hpp"
 #include "../evaluation_domain/domains/basic_radix2_domain.hpp"

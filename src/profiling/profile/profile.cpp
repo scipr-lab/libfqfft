@@ -22,8 +22,8 @@
 #include <unistd.h>
 #include <vector>
 
-#include "algebra/curves/edwards/edwards_pp.hpp"
-#include "common/double.hpp"
+#include <libff/algebra/curves/edwards/edwards_pp.hpp>
+#include <libff/common/double.hpp>
 
 #include "../../evaluation_domain/evaluation_domain.hpp"
 #include "../../evaluation_domain/domains/basic_radix2_domain.hpp"
