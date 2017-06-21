@@ -23,13 +23,13 @@ ___libfqfft___ is a C++ library for __Fast Fourier Transforms (FFTs)__ in __fini
 
 The directory structure is as follows:
 
-* [__src__](src): C++ source code, containing the following modules:
-  * [__evaluation\_domain__](src/evaluation_domain): declaration of interfaces for evaluation domains
-  * [__kronecker\_substitution__](src/kronecker_substitution): Kronecker substitution for polynomial multiplication
-  * [__polynomial\_arithmetic__](src/polynomial_arithmetic): polynomial arithmetic and extended GCD
-  * [__profiling__](src/profiling): functionality to profile running time, space usage, and number of field operations
-  * [__tests__](src/tests): collection of GTests
-  * [__tools__](src/tools): tools for evaluation domains
+* [__libfqfft__](libfqfft): C++ source code, containing the following modules:
+  * [__evaluation\_domain__](libfqfft/evaluation_domain): declaration of interfaces for evaluation domains
+  * [__kronecker\_substitution__](libfqfft/kronecker_substitution): Kronecker substitution for polynomial multiplication
+  * [__polynomial\_arithmetic__](libfqfft/polynomial_arithmetic): polynomial arithmetic and extended GCD
+  * [__profiling__](libfqfft/profiling): functionality to profile running time, space usage, and number of field operations
+  * [__tests__](libfqfft/tests): collection of GTests
+  * [__tools__](libfqfft/tools): tools for evaluation domains
 * [__tutorials__](tutorials): tutorials for getting started with _libfqfft_
 
 ## Introduction
@@ -127,7 +127,7 @@ NUMA node0 CPU(s):     0-7
 
 __Warning:__ Profiling of memory usage is Linux-specific as it makes use of `getrusage()` from `<sys/resource.h>`. Compatibility of the `getrusage()` BSD syscall equivalent is kernel specific, such as with the `getrusage()` call listed under Darwin/OSX [XNU-3248.20.55](http://opensource.apple.com//source/xnu/xnu-3248.20.55/) in `bsd/kern/kern_resource.c`.
 
-The library includes functionality for profiling running time, memory usage, and number of field operations, and also for plotting the resulting data with [gnuplot](http://www.gnuplot.info/). All profiling and plotting activity is logged in the folder `src/profiling/logs`; logs are sorted into a directory hierarchy by profiling type and timestamp, respectively. The running time and memory usage profiling also supports multi-threading.
+The library includes functionality for profiling running time, memory usage, and number of field operations, and also for plotting the resulting data with [gnuplot](http://www.gnuplot.info/). All profiling and plotting activity is logged in the folder `libfqfft/profiling/logs`; logs are sorted into a directory hierarchy by profiling type and timestamp, respectively. The running time and memory usage profiling also supports multi-threading.
 
 To start the profiler, after [Compilation](#compilation), run ```./profiling_menu``` from the project root directory. Below is an explanation of profiling and plotting options.
 
@@ -141,7 +141,7 @@ Profiling options include:
 2. __Domain type:__ All domains, radix-2 domains, or arithmetic/geometric sequence domains
 3. __Domain sizes:__ Preset small, preset large, or custom size
 
-Profiling results are saved in ```src/profiling/logs/{datetime}```.
+Profiling results are saved in ```libfqfft/profiling/logs/{datetime}```.
 
 ### Plotting
 
@@ -164,9 +164,9 @@ To run the GTests for this library, after [Compilation](#compilation), run:
 make check
 ```
 
-This will compile and run the tests. Alternatively, from the `build` folder, one can also run `./src/gtests` after compiling.
+This will compile and run the tests. Alternatively, from the `build` folder, one can also run `./libfqfft/gtests` after compiling.
 
-The unit tests are divided into three GTest files located under `src/tests`:
+The unit tests are divided into three GTest files located under `libfqfft/tests`:
 
 1. __Evaluation domains__: `evaluation_domain_test.cpp`
 2. __Polynomial arithmetic__: `polynomial_arithmetic_test.cpp`
@@ -267,7 +267,7 @@ The above will compile the executables to the `build/tutorials` folder, and then
 
 * Run: `./polynomial_multiplication`
 
-We construct two polynomials, _a_ and _b_, and then call the `_polynomial_multiplication()` function in `src/polynomial_arithmetic/basic_operations.hpp` to perform our operation. The result is stored into polynomial _c_, and then printed out. Note that polynomials are stored in C++ STL vectors in order from lowest to highest degree.
+We construct two polynomials, _a_ and _b_, and then call the `_polynomial_multiplication()` function in `libfqfft/polynomial_arithmetic/basic_operations.hpp` to perform our operation. The result is stored into polynomial _c_, and then printed out. Note that polynomials are stored in C++ STL vectors in order from lowest to highest degree.
 
 ### Polynomial evaluation
 

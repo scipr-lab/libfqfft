@@ -102,5 +102,5 @@ add_custom_target(
 )
 
 include_directories(.)
-add_subdirectory(src)
+add_subdirectory(libfqfft)
 add_subdirectory(tutorials)
