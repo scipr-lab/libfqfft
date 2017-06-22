@@ -27,6 +27,7 @@
 #define EVALUATION_DOMAIN_HPP_
 
 #include <memory>
+#include <vector>
 
 namespace libfqfft {
 

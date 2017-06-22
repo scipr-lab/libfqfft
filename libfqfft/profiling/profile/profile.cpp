@@ -9,28 +9,27 @@
  * @copyright  MIT license (see LICENSE file)
  *****************************************************************************/
 
+#ifndef PROFILE_OP_COUNTS
+#error PROFILE_OP_COUNTS must be defined to build this profiler.
+#endif
+
+#include <cstdint>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 #include <ctime>
-#include <iostream>
 #include <fstream>
-#include <omp.h>
+#include <iostream>
 #include <sstream>
-#include <stdio.h>
-#include <string.h>
-#include <stdint.h>
-#include <stdlib.h>
+#include <vector>
 #include <sys/resource.h>
 #include <unistd.h>
-#include <vector>
 
 #include <libff/algebra/curves/edwards/edwards_pp.hpp>
 #include <libff/common/double.hpp>
+#include <omp.h>
 
-#include <libfqfft/evaluation_domain/evaluation_domain.hpp>
-#include <libfqfft/evaluation_domain/domains/basic_radix2_domain.hpp>
-#include <libfqfft/evaluation_domain/domains/extended_radix2_domain.hpp>
-#include <libfqfft/evaluation_domain/domains/step_radix2_domain.hpp>
-#include <libfqfft/evaluation_domain/domains/geometric_sequence_domain.hpp>
-#include <libfqfft/evaluation_domain/domains/arithmetic_sequence_domain.hpp>
+#include <libfqfft/evaluation_domain/evaluation_domain.hpp> // this also includes all children of evaluation_domain
 
 using namespace libfqfft;
 

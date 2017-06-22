@@ -2,7 +2,7 @@
  *****************************************************************************
 
  Declaration of interfaces for naive evaluation routines.
- 
+
  *****************************************************************************
  * @author     This file is part of libfqfft, developed by SCIPR Lab
  *             and contributors (see AUTHORS).
@@ -11,6 +11,10 @@
 
 #ifndef NAIVE_EVALUATE_HPP_
 #define NAIVE_EVALUATE_HPP_
+
+#include <vector>
+
+#include <libfqfft/tools/exceptions.hpp>
 
 namespace libfqfft {
 

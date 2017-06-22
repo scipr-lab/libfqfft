@@ -15,6 +15,8 @@
 #ifndef BASIC_RADIX2_DOMAIN_AUX_HPP_
 #define BASIC_RADIX2_DOMAIN_AUX_HPP_
 
+#include <vector>
+
 namespace libfqfft {
 
 /**

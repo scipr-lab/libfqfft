@@ -5,9 +5,10 @@
  * @copyright  MIT license (see LICENSE file)
  *****************************************************************************/
 
+#include <vector>
+
 #include <gtest/gtest.h>
 #include <stdint.h>
-#include <vector>
 
 #include <libfqfft/polynomial_arithmetic/basic_operations.hpp>
 #include <libfqfft/polynomial_arithmetic/xgcd.hpp>

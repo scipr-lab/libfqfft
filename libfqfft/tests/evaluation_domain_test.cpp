@@ -5,18 +5,13 @@
  * @copyright  MIT license (see LICENSE file)
  *****************************************************************************/
 
-#include <gtest/gtest.h>
-#include <stdint.h>
 #include <vector>
 
+#include <gtest/gtest.h>
 #include <libff/algebra/curves/mnt/mnt4/mnt4_pp.hpp>
+#include <stdint.h>
 
-#include <libfqfft/evaluation_domain/evaluation_domain.hpp>
-#include <libfqfft/evaluation_domain/domains/basic_radix2_domain.hpp>
-#include <libfqfft/evaluation_domain/domains/extended_radix2_domain.hpp>
-#include <libfqfft/evaluation_domain/domains/step_radix2_domain.hpp>
-#include <libfqfft/evaluation_domain/domains/geometric_sequence_domain.hpp>
-#include <libfqfft/evaluation_domain/domains/arithmetic_sequence_domain.hpp>
+#include <libfqfft/evaluation_domain/evaluation_domain.hpp> // this also includes all children of evaluation_domain
 #include <libfqfft/polynomial_arithmetic/naive_evaluate.hpp>
 #include <libfqfft/tools/exceptions.hpp>
 
@@ -78,7 +73,7 @@ namespace libfqfft {
       }
     }
   }
-  
+
   TYPED_TEST(EvaluationDomainTest, InverseFFTofFFT) {
 
     const size_t m = 4;
@@ -111,7 +106,7 @@ namespace libfqfft {
       catch(const InvalidSizeException &e)
       {
         printf("%s - skipping\n", e.what());
-      } 
+      }
     }
   }
 
@@ -161,7 +156,7 @@ namespace libfqfft {
     std::shared_ptr<evaluation_domain<TypeParam> > domain;
     for (int key = 0; key < 5; key++)
     {
-        
+
       try
       {
         if (key == 0) domain.reset(new basic_radix2_domain<TypeParam>(m));
@@ -198,7 +193,7 @@ namespace libfqfft {
   }
 
   TYPED_TEST(EvaluationDomainTest, ComputeZ) {
-    
+
     const size_t m = 8;
     TypeParam t = TypeParam(10);
 

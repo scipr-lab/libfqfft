@@ -12,6 +12,8 @@
 #ifndef KRONECKER_SUBSTITUTION_HPP_
 #define KRONECKER_SUBSTITUTION_HPP_
 
+#include <vector>
+
 namespace libfqfft {
 
 /**

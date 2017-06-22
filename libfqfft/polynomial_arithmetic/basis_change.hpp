@@ -2,7 +2,7 @@
  *****************************************************************************
 
  Declaration of interfaces for basis change routines.
- 
+
  *****************************************************************************
  * @author     This file is part of libfqfft, developed by SCIPR Lab
  *             and contributors (see AUTHORS).
@@ -11,6 +11,8 @@
 
 #ifndef BASIS_CHANGE_HPP_
 #define BASIS_CHANGE_HPP_
+
+#include <vector>
 
 namespace libfqfft {
 

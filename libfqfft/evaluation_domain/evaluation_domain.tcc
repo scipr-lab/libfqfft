@@ -19,12 +19,11 @@
 #ifndef EVALUATION_DOMAIN_TCC_
 #define EVALUATION_DOMAIN_TCC_
 
+#include <libfqfft/evaluation_domain/domains/arithmetic_sequence_domain.hpp>
 #include <libfqfft/evaluation_domain/domains/basic_radix2_domain.hpp>
 #include <libfqfft/evaluation_domain/domains/extended_radix2_domain.hpp>
-#include <libfqfft/evaluation_domain/domains/step_radix2_domain.hpp>
-#include <libfqfft/evaluation_domain/domains/arithmetic_sequence_domain.hpp>
 #include <libfqfft/evaluation_domain/domains/geometric_sequence_domain.hpp>
-
+#include <libfqfft/evaluation_domain/domains/step_radix2_domain.hpp>
 #include <libfqfft/tools/exceptions.hpp>
 
 namespace libfqfft {
