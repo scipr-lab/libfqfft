@@ -15,9 +15,10 @@
 #define BASIS_CHANGE_TCC_
 
 #include <algorithm>
+
+#include <libfqfft/evaluation_domain/domains/basic_radix2_domain_aux.hpp>
 #include <libfqfft/polynomial_arithmetic/basic_operations.hpp>
 #include <libfqfft/polynomial_arithmetic/xgcd.hpp>
-#include <libfqfft/evaluation_domain/domains/basic_radix2_domain_aux.hpp>
 
 namespace libfqfft {
 

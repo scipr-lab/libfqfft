@@ -15,9 +15,10 @@
 #define KRONECKER_SUBSTITUTION_TCC_
 
 #include <algorithm>
-#include <math.h>
+#include <cmath>
 
-#define GMP_LIMB_BITS 64
+#include <gmp.h>
+#include <libff/common/utils.hpp>
 
 namespace libfqfft {
 
@@ -44,7 +45,7 @@ void kronecker_substitution(std::vector<FieldT> &v3, const std::vector<FieldT> &
     /* Output polynomial */
     v3.resize(n3, FieldT::zero());
 
-    /* 
+    /*
      * Allocate all MP_LIMB_T space once and store the reference pointer M1
      * to free memory afterwards. P1, P2, and P3 will remain fixed pointers
      * to the start of their respective polynomials as reference.
@@ -72,7 +73,7 @@ void kronecker_substitution(std::vector<FieldT> &v3, const std::vector<FieldT> &
         val = v1[i].as_ulong();
         limb += (val << limb_b);
 
-        /* 
+        /*
          * If the next iteration of LIMB_B is >= to the GMP_LIMB_BITS, then
          * write it out to MP_LIMB_T* and reset LIMB. If VAL has remaining
          * bits due to GMP_LIMB_BITS boundary, set it in LIMB and proceed.
@@ -99,7 +100,7 @@ void kronecker_substitution(std::vector<FieldT> &v3, const std::vector<FieldT> &
             val = v2[i].as_ulong();
             limb += (val << limb_b);
 
-            /* 
+            /*
              * If the next iteration of LIMB_B is >= to the GMP_LIMB_BITS, then
              * write it out to MP_LIMB_T* and reset LIMB. If VAL has remaining
              * bits due to GMP_LIMB_BITS boundary, set it in LIMB and proceed.
@@ -130,7 +131,7 @@ void kronecker_substitution(std::vector<FieldT> &v3, const std::vector<FieldT> &
         limb_b = 0;
         for (size_t i = 0; i < n3; i++)
         {
-            /* 
+            /*
              * If the coefficient's bit length is contained in LIMB, then
              * write the masked value out to vector V3 and decrement LIMB
              * by B bits.
@@ -142,7 +143,7 @@ void kronecker_substitution(std::vector<FieldT> &v3, const std::vector<FieldT> &
                 delta = b;
                 delta_b = limb_b - delta;
             }
-            /* 
+            /*
              * If the remaining coefficient is across two LIMBs, then write
              * to vector V3 the current limb's value and add upper bits from
              * the second part. Lastly, decrement LIMB by the coefficient's

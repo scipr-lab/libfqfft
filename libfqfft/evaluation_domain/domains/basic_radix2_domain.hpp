@@ -14,6 +14,8 @@
 #ifndef BASIC_RADIX2_DOMAIN_HPP_
 #define BASIC_RADIX2_DOMAIN_HPP_
 
+#include <vector>
+
 #include <libfqfft/evaluation_domain/evaluation_domain.hpp>
 
 namespace libfqfft {

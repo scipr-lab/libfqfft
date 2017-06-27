@@ -2,7 +2,7 @@
  *****************************************************************************
 
  Declaration of interfaces for extended GCD routines.
- 
+
  *****************************************************************************
  * @author     This file is part of libfqfft, developed by SCIPR Lab
  *             and contributors (see AUTHORS).
@@ -11,6 +11,8 @@
 
 #ifndef XGCD_HPP_
 #define XGCD_HPP_
+
+#include <vector>
 
 namespace libfqfft {
 

@@ -14,6 +14,10 @@
 #ifndef BASIC_RADIX2_DOMAIN_TCC_
 #define BASIC_RADIX2_DOMAIN_TCC_
 
+#include <libff/algebra/fields/field_utils.hpp>
+#include <libff/common/double.hpp>
+#include <libff/common/utils.hpp>
+
 #include <libfqfft/evaluation_domain/domains/basic_radix2_domain_aux.hpp>
 
 namespace libfqfft {

@@ -11,17 +11,18 @@
 
 #include <cmath>
 #include <ctime>
-#include <dirent.h>
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <sstream>
-#include <stdio.h>
-#include <string.h>
+#include <vector>
+
+#include <dirent.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/resource.h>
 #include <unistd.h>
-#include <vector>
 
 /* Level 2: Profile */
 void profile()

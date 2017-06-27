@@ -3,7 +3,7 @@
  *****************************************************************************
 
  Declaration of interfaces for basic polynomial operation routines.
- 
+
  *****************************************************************************
  * @author     This file is part of libfqfft, developed by SCIPR Lab
  *             and contributors (see AUTHORS).
@@ -12,6 +12,8 @@
 
 #ifndef BASIC_OPERATIONS_HPP_
 #define BASIC_OPERATIONS_HPP_
+
+#include <vector>
 
 namespace libfqfft {
 

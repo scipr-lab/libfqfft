@@ -15,6 +15,7 @@
 #define BASIC_RADIX2_DOMAIN_AUX_TCC_
 
 #include <algorithm>
+#include <vector>
 
 #ifdef MULTICORE
 #include <omp.h>
@@ -23,6 +24,10 @@
 #include <libff/algebra/fields/field_utils.hpp>
 
 #include <libfqfft/tools/exceptions.hpp>
+
+#ifdef DEBUG
+#include <libff/common/profiling.hpp>
+#endif
 
 namespace libfqfft {
 
