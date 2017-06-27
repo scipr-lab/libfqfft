@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <vector>
 
-#include "common/double.hpp"
-
-#include "../src/polynomial_arithmetic/basic_operations.hpp"
+#include <libff/common/double.hpp>
+#include <libfqfft/polynomial_arithmetic/basic_operations.hpp>
 
 using namespace libfqfft;
 

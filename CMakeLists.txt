@@ -79,7 +79,7 @@ find_library(GMPXX_LIBRARIES NAMES gmpxx libgmpxx)
 
 # libff
 find_path(LIBFF_INCLUDE_DIR NAMES libff)
-include_directories(${LIBFF_INCLUDE_DIR}/libff)
+include_directories(${LIBFF_INCLUDE_DIR})
 find_library(LIBFF_LIBRARIES NAMES ff libff)
 
 # Google Test
@@ -102,5 +102,5 @@ add_custom_target(
 )
 
 include_directories(.)
-add_subdirectory(src)
+add_subdirectory(libfqfft)
 add_subdirectory(tutorials)

@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <vector>
 
-#include "common/double.hpp"
-
-#include "../src/evaluation_domain/evaluation_domain.hpp"
+#include <libff/common/double.hpp>
+#include <libfqfft/evaluation_domain/evaluation_domain.hpp>
 
 using namespace libfqfft;
 
@@ -13,7 +12,7 @@ void lagrange_polynomial_evaluation_example ()
 {
   /* Domain size */
   const size_t m = 16;
-  
+
   /* Evaluation element */
   FieldT t = FieldT(4);
 
