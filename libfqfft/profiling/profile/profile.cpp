@@ -29,7 +29,11 @@
 #include <libff/common/double.hpp>
 #include <omp.h>
 
-#include <libfqfft/evaluation_domain/evaluation_domain.hpp> // this also includes all children of evaluation_domain
+#include <libfqfft/evaluation_domain/domains/arithmetic_sequence_domain.hpp>
+#include <libfqfft/evaluation_domain/domains/basic_radix2_domain.hpp>
+#include <libfqfft/evaluation_domain/domains/extended_radix2_domain.hpp>
+#include <libfqfft/evaluation_domain/domains/geometric_sequence_domain.hpp>
+#include <libfqfft/evaluation_domain/domains/step_radix2_domain.hpp>
 
 using namespace libfqfft;
 

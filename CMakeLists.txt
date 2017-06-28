@@ -72,6 +72,8 @@ else()
   )
 endif()
 
+include_directories(.)
+
 # GMP
 find_path(GMP_INCLUDE_DIR NAMES gmp.h)
 find_library(GMP_LIBRARIES NAMES gmp libgmp)
@@ -101,6 +103,5 @@ add_custom_target(
   COMMAND polynomial_multiplication
 )
 
-include_directories(.)
 add_subdirectory(libfqfft)
 add_subdirectory(tutorials)
