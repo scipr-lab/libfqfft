@@ -26,7 +26,6 @@
 #ifndef EVALUATION_DOMAIN_HPP_
 #define EVALUATION_DOMAIN_HPP_
 
-#include <memory>
 #include <vector>
 
 namespace libfqfft {
@@ -99,15 +98,6 @@ public:
     virtual void divide_by_Z_on_coset(std::vector<FieldT> &P) = 0;
 };
 
-/**
- * Return an evaluation domain object in which the domain S has size |S| >= min_size.
- * The function chooses from different supported domains, depending on min_size.
- */
-template<typename FieldT>
-std::shared_ptr<evaluation_domain<FieldT> > get_evaluation_domain(const size_t min_size);
-
 } // libfqfft
-
-#include <libfqfft/evaluation_domain/evaluation_domain.tcc>
 
 #endif // EVALUATION_DOMAIN_HPP_

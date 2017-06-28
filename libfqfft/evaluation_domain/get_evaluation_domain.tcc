@@ -16,14 +16,15 @@
  * @copyright  MIT license (see LICENSE file)
  *****************************************************************************/
 
-#ifndef EVALUATION_DOMAIN_TCC_
-#define EVALUATION_DOMAIN_TCC_
+#ifndef GET_EVALUATION_DOMAIN_TCC_
+#define GET_EVALUATION_DOMAIN_TCC_
 
 #include <libfqfft/evaluation_domain/domains/arithmetic_sequence_domain.hpp>
 #include <libfqfft/evaluation_domain/domains/basic_radix2_domain.hpp>
 #include <libfqfft/evaluation_domain/domains/extended_radix2_domain.hpp>
 #include <libfqfft/evaluation_domain/domains/geometric_sequence_domain.hpp>
 #include <libfqfft/evaluation_domain/domains/step_radix2_domain.hpp>
+#include <libfqfft/evaluation_domain/evaluation_domain.hpp>
 #include <libfqfft/tools/exceptions.hpp>
 
 namespace libfqfft {
@@ -52,4 +53,4 @@ std::shared_ptr<evaluation_domain<FieldT> > get_evaluation_domain(const size_t m
 
 } // libfqfft
 
-#endif // EVALUATION_DOMAIN_TCC_
+#endif // GET_EVALUATION_DOMAIN_TCC_

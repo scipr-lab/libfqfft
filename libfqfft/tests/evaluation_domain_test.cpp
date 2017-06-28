@@ -5,13 +5,18 @@
  * @copyright  MIT license (see LICENSE file)
  *****************************************************************************/
 
+#include <memory>
 #include <vector>
 
 #include <gtest/gtest.h>
 #include <libff/algebra/curves/mnt/mnt4/mnt4_pp.hpp>
 #include <stdint.h>
 
-#include <libfqfft/evaluation_domain/evaluation_domain.hpp> // this also includes all children of evaluation_domain
+#include <libfqfft/evaluation_domain/domains/arithmetic_sequence_domain.hpp>
+#include <libfqfft/evaluation_domain/domains/basic_radix2_domain.hpp>
+#include <libfqfft/evaluation_domain/domains/extended_radix2_domain.hpp>
+#include <libfqfft/evaluation_domain/domains/geometric_sequence_domain.hpp>
+#include <libfqfft/evaluation_domain/domains/step_radix2_domain.hpp>
 #include <libfqfft/polynomial_arithmetic/naive_evaluate.hpp>
 #include <libfqfft/tools/exceptions.hpp>
 
