@@ -1,8 +1,9 @@
-#include <stdio.h>
+#include <cstdio>
+#include <memory>
 #include <vector>
 
 #include <libff/common/double.hpp>
-#include <libfqfft/evaluation_domain/evaluation_domain.hpp>
+#include <libfqfft/evaluation_domain/get_evaluation_domain.hpp>
 
 using namespace libfqfft;
 

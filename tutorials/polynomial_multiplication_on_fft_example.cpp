@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <cstdio>
 #include <vector>
 
 #include <libff/common/double.hpp>
