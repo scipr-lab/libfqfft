@@ -208,11 +208,16 @@ Finally, follow the build guide for [libff](https://github.com/scipr-lab/libff).
 
 ### Compilation
 
+Fetch dependencies from their GitHub repos:
+
+```
+git submodule update --init --recursive
+```
+
 To compile, starting at the project root directory, create the Makefile:
 
 ```
-mkdir build && cd build
-cmake ..
+mkdir build && cd build && cmake ..
 ```
 
 #### Options

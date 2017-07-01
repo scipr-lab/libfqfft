@@ -22,10 +22,16 @@ target_link_libraries(
   gtests
 
   ${GTEST_BOTH_LIBRARIES}
-  ${LIBFF_LIBRARIES}
   ${GMP_LIBRARIES}
   ${GMPXX_LIBRARIES}
   ${PROCPS_LIBRARIES}
+  ${CMAKE_CURRENT_SOURCE_DIR}/../third_party/libff/lib/libff.a
+)
+target_include_directories(
+  gtests
+
+  PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/../third_party/libff/include
 )
 
 # Profiling with Double by default
@@ -65,10 +71,16 @@ set_target_properties(
 target_link_libraries(
   profiler
 
-  ${LIBFF_LIBRARIES}
   ${GMP_LIBRARIES}
   ${GMPXX_LIBRARIES}
   ${PROCPS_LIBRARIES}
+  ${CMAKE_CURRENT_SOURCE_DIR}/../third_party/libff/lib/libff.a
+)
+target_include_directories(
+  profiler
+
+  PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/../third_party/libff/include
 )
 
 if(${PROF_DOUBLE})

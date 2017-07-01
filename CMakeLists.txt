@@ -79,11 +79,6 @@ find_path(GMP_INCLUDE_DIR NAMES gmp.h)
 find_library(GMP_LIBRARIES NAMES gmp libgmp)
 find_library(GMPXX_LIBRARIES NAMES gmpxx libgmpxx)
 
-# libff
-find_path(LIBFF_INCLUDE_DIR NAMES libff)
-include_directories(${LIBFF_INCLUDE_DIR})
-find_library(LIBFF_LIBRARIES NAMES ff libff)
-
 # Google Test
 enable_testing()
 find_package(GTest REQUIRED)
@@ -103,5 +98,6 @@ add_custom_target(
   COMMAND polynomial_multiplication
 )
 
+add_subdirectory(third_party)
 add_subdirectory(libfqfft)
 add_subdirectory(tutorials)

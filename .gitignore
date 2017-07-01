@@ -1,0 +1,8 @@
+*.o
+*.a
+*.so
+*.d
+build
+profiler
+profiling_menu
+third_party/libff/*
