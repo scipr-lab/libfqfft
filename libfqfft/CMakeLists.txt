@@ -37,6 +37,7 @@ target_include_directories(
 # Profiling with Double by default
 add_executable(
   profiling_menu
+  EXCLUDE_FROM_ALL
 
   profiling/profiling_menu.cpp
 )
