@@ -50,6 +50,7 @@ set_target_properties(
 
 add_executable(
   profiler
+  EXCLUDE_FROM_ALL
 
   profiling/profile/profile.cpp
 )
