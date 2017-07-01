@@ -204,8 +204,6 @@ sudo make
 sudo cp *.a /usr/lib # Copy/Symlink 'libgtest.a' and 'libgtest_main.a' into '/usr/lib'
 ```
 
-Finally, follow the build guide for [libff](https://github.com/scipr-lab/libff).
-
 ### Compilation
 
 Fetch dependencies from their GitHub repos:
