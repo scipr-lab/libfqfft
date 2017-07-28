@@ -98,6 +98,6 @@ add_custom_target(
   COMMAND polynomial_multiplication
 )
 
-add_subdirectory(third_party)
+add_subdirectory(depends)
 add_subdirectory(libfqfft)
 add_subdirectory(tutorials)
