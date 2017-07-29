@@ -2,7 +2,7 @@
 *.a
 *.so
 *.d
-build
+depends
 profiler
 profiling_menu
 depends/libff/*
