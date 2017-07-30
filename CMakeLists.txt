@@ -14,6 +14,12 @@ option(
   ON
 )
 
+option(
+  PROF_DOUBLE
+  "Use Double for profiling"
+  ON
+)
+
 set(
   OPT_FLAGS
   ""
@@ -22,11 +28,19 @@ set(
   "Override C++ compiler optimization flags"
 )
 
-option(
-  PROF_DOUBLE
-  "Use Double for profiling"
-  ON
-)
+if(NOT "${ROOT_DEPENDS_DIR}" STREQUAL "")
+  set(DEPENDS_DIR "${ROOT_DEPENDS_DIR}")
+elseif("${DEPENDS_DIR}" STREQUAL "")
+  set(
+    DEPENDS_DIR
+    "${CMAKE_CURRENT_SOURCE_DIR}/depends"
+    CACHE
+    STRING
+    "Optionally specify the dependency installation directory relative to the source directory (default: inside dependency folder)"
+  )
+else()
+  set(DEPENDS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/${DEPENDS_DIR}")
+endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   # Common compilation flags and warning configuration
