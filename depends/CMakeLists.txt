@@ -12,4 +12,5 @@ if(${CURVE} STREQUAL "BN128")
   )
 endif()
 
+OPTION(IS_LIBFF_PARENT OFF)
 add_subdirectory(libff)

@@ -209,7 +209,7 @@ sudo cp *.a /usr/lib # Copy/Symlink 'libgtest.a' and 'libgtest_main.a' into '/us
 Fetch dependencies from their GitHub repos:
 
 ```
-git submodule update --init --recursive
+git submodule init && git submodule update
 ```
 
 To compile, starting at the project root directory, create the Makefile:
