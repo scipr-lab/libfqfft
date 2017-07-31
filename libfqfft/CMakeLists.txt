@@ -21,8 +21,8 @@ add_executable(
 target_link_libraries(
   gtests
 
+  ff
   ${GTEST_BOTH_LIBRARIES}
-  ${DEPENDS_DIR}/libff/lib/libff.a
   ${GMP_LIBRARIES}
   ${GMPXX_LIBRARIES}
   ${PROCPS_LIBRARIES}
