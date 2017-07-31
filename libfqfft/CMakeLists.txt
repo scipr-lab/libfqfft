@@ -8,33 +8,6 @@ install(
   PATTERN "tutorials" EXCLUDE
 )
 
-# GTests
-add_executable(
-  gtests
-  EXCLUDE_FROM_ALL
-
-  tests/init_test
-  tests/evaluation_domain_test
-  tests/polynomial_arithmetic_test
-  tests/kronecker_substitution_test
-)
-target_link_libraries(
-  gtests
-
-  ff
-  ${GTEST_BOTH_LIBRARIES}
-  ${GMP_LIBRARIES}
-  ${GMPXX_LIBRARIES}
-  ${PROCPS_LIBRARIES}
-  
-)
-target_include_directories(
-  gtests
-
-  PUBLIC
-  ${DEPENDS_DIR}/libff/include
-)
-
 # Profiling with Double by default
 add_executable(
   profiling_menu
@@ -97,10 +70,39 @@ if(${PROF_DOUBLE})
   )
 endif()
 
-include(CTest)
-add_test(
-  NAME gtests
-  COMMAND gtests
-)
+if ("${IS_LIBFQFFT_PARENT}")
+  # GTests
+  add_executable(
+    gtests
+    EXCLUDE_FROM_ALL
 
-add_dependencies(check gtests)
+    tests/init_test
+    tests/evaluation_domain_test
+    tests/polynomial_arithmetic_test
+    tests/kronecker_substitution_test
+  )
+  target_link_libraries(
+    gtests
+
+    ff
+    ${GTEST_BOTH_LIBRARIES}
+    ${GMP_LIBRARIES}
+    ${GMPXX_LIBRARIES}
+    ${PROCPS_LIBRARIES}
+    
+  )
+  target_include_directories(
+    gtests
+
+    PUBLIC
+    ${DEPENDS_DIR}/libff/include
+  )
+
+  include(CTest)
+  add_test(
+    NAME gtests
+    COMMAND gtests
+  )
+
+  add_dependencies(check gtests)
+endif()

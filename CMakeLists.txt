@@ -29,7 +29,7 @@ option(
 )
 
 option(
-  IS_PARENT_CMAKE
+  IS_LIBFQFFT_PARENT
   "Install submodule dependencies if caller originates from here"
   ON
 )
@@ -108,26 +108,23 @@ find_path(GMP_INCLUDE_DIR NAMES gmp.h)
 find_library(GMP_LIBRARIES NAMES gmp libgmp)
 find_library(GMPXX_LIBRARIES NAMES gmpxx libgmpxx)
 
-# Google Test
-enable_testing()
-find_package(GTest REQUIRED)
-include_directories(${GTEST_INCLUDE_DIRS})
+if ("${IS_LIBFQFFT_PARENT}")
+  # Google Test
+  enable_testing()
+  find_package(GTest REQUIRED)
+  include_directories(${GTEST_INCLUDE_DIRS})
 
-add_custom_target(
-  check
+  add_custom_target(
+    tutorials
 
-  COMMAND
-  ${CMAKE_CTEST_COMMAND}
-)
-add_custom_target(
-  tutorials
+    COMMAND lagrange_polynomial_evaluation
+    COMMAND polynomial_evaluation
+    COMMAND polynomial_multiplication
+  )
 
-  COMMAND lagrange_polynomial_evaluation
-  COMMAND polynomial_evaluation
-  COMMAND polynomial_multiplication
-)
+  # Add a `make check` target that builds and tests
+  add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND})
 
-if ("${IS_PARENT_CMAKE}")
   add_subdirectory(depends)
 endif()
 add_subdirectory(libfqfft)
