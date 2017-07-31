@@ -2,6 +2,14 @@ cmake_minimum_required(VERSION 2.8)
 
 project(libfqfft)
 
+set(
+  CURVE
+  "BN128"
+  CACHE
+  STRING
+  "Default curve: one of ALT_BN128, BN128, EDWARDS, MNT4, MNT6"
+)
+
 option(
   MULTICORE
   "Enable parallelized execution, using OpenMP"
