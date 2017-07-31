@@ -20,6 +20,12 @@ option(
   ON
 )
 
+option(
+  IS_PARENT_CMAKE
+  "Install submodule dependencies if caller originates from here"
+  ON
+)
+
 set(
   OPT_FLAGS
   ""
@@ -29,6 +35,7 @@ set(
 )
 
 if(NOT "${ROOT_DEPENDS_DIR}" STREQUAL "")
+  set(IS_PARENT_CMAKE OFF)
   set(DEPENDS_DIR "${ROOT_DEPENDS_DIR}")
 elseif("${DEPENDS_DIR}" STREQUAL "")
   set(
@@ -112,6 +119,8 @@ add_custom_target(
   COMMAND polynomial_multiplication
 )
 
-add_subdirectory(depends)
+if ("${IS_PARENT_CMAKE}")
+  add_subdirectory(depends)
+endif()
 add_subdirectory(libfqfft)
 add_subdirectory(tutorials)
