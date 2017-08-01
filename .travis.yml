@@ -22,7 +22,7 @@ before_install:
   - sudo cp /usr/src/gtest/*.a /usr/lib
 
 before_script:
-  - git submodule update --init --recursive
+  - git submodule init && git submodule update
   - mkdir build && cd build && cmake ..
 
 script:
