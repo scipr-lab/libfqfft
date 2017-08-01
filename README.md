@@ -190,14 +190,12 @@ The library has been tested on Linux, but it is compatible with Windows and Mac 
 On Ubuntu 14.04 LTS:
 
 ```
-sudo apt-get install build-essential git cmake gnuplot-x11 libgmp3-dev libprocps3-dev
+sudo apt-get install build-essential git libboost-all-dev cmake libgmp3-dev libssl-dev libprocps3-dev pkg-config gnuplot-x11 libgtest-dev
 ```
 
-Next fetch, install, and setup __GTest__:
+Next, setup __GTest__:
 
 ```
-sudo apt-get install libgtest-dev
-
 cd /usr/src/gtest
 sudo cmake CMakeLists.txt
 sudo make
