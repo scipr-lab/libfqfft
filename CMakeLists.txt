@@ -126,6 +126,6 @@ if ("${IS_LIBFQFFT_PARENT}")
   add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND})
 
   add_subdirectory(depends)
+  add_subdirectory(libfqfft)
 endif()
-add_subdirectory(libfqfft)
 add_subdirectory(tutorials)
