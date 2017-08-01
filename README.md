@@ -238,7 +238,7 @@ Enables profiling with Double (default: ON). If the flag is turned off, profilin
 Links libprocps for usage in memory profiling. If this flag is turned off, memory profiling will not work.
 
 * `cmake .. -DDEPENDS_DIR=...`
-Sets the dependency installation directory to the provided relative path from the source directory (default: installs dependencies in the respective submodule directories)
+Sets the dependency installation directory to the provided absolute path (default: installs dependencies in the respective submodule directories)
 
 Then, to compile the library and profiler, run:
 

@@ -47,7 +47,7 @@ set_target_properties(
 target_link_libraries(
   profiler
 
-  ${DEPENDS_DIR}/libff/lib/libff.a
+  ff
   ${GMP_LIBRARIES}
   ${GMPXX_LIBRARIES}
   ${PROCPS_LIBRARIES}
@@ -56,7 +56,7 @@ target_include_directories(
   profiler
 
   PUBLIC
-  ${DEPENDS_DIR}/libff/include
+  ${DEPENDS_DIR}/libff/
 )
 
 if(${PROF_DOUBLE})
@@ -95,7 +95,7 @@ if ("${IS_LIBFQFFT_PARENT}")
     gtests
 
     PUBLIC
-    ${DEPENDS_DIR}/libff/include
+    ${DEPENDS_DIR}/libff/
   )
 
   include(CTest)
