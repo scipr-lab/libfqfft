@@ -109,10 +109,7 @@ find_library(GMP_LIBRARIES NAMES gmp libgmp)
 find_library(GMPXX_LIBRARIES NAMES gmpxx libgmpxx)
 
 if ("${IS_LIBFQFFT_PARENT}")
-  # Google Test
   enable_testing()
-  find_package(GTest REQUIRED)
-  include_directories(${GTEST_INCLUDE_DIRS})
 
   add_custom_target(
     tutorials
