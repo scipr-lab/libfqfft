@@ -132,8 +132,8 @@ The library has the following dependencies:
 * [Google Test (GTest)](http://github.com/google/googletest)
 * [GMP](http://gmplib.org/)
 * [gnuplot](http://www.gnuplot.info/)
-* [libprocps](http://packages.ubuntu.com/trusty/libprocps3-dev)
 * [libff](https://github.com/scipr-lab/libff)
+* [libprocps](http://packages.ubuntu.com/trusty/libprocps3-dev)
 
 The library has been tested on Linux, but it is compatible with Windows and Mac OS X. (Nevertheless, memory profiling works only on Linux machines.)
 
@@ -142,16 +142,7 @@ The library has been tested on Linux, but it is compatible with Windows and Mac 
 On Ubuntu 14.04 LTS:
 
 ```
-sudo apt-get install build-essential git libboost-all-dev cmake libgmp3-dev libssl-dev libprocps3-dev pkg-config gnuplot-x11 libgtest-dev
-```
-
-Next, setup __GTest__:
-
-```
-cd /usr/src/gtest
-sudo cmake CMakeLists.txt
-sudo make
-sudo cp *.a /usr/lib # Copy/Symlink 'libgtest.a' and 'libgtest_main.a' into '/usr/lib'
+sudo apt-get install build-essential git libboost-all-dev cmake libgmp3-dev libssl-dev libprocps3-dev pkg-config gnuplot-x11
 ```
 
 ### Compilation
