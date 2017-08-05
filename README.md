@@ -5,7 +5,7 @@ ___libfqfft___ is a C++ library for __Fast Fourier Transforms (FFTs)__ in __fini
 
 ## Table of contents
 
-- [Directory Structure](#directory-structure)
+- [Directory structure](#directory-structure)
 - [Introduction](#introduction)
 - [Background](#background)
 - [Domains](#domains)
@@ -30,6 +30,7 @@ The directory structure is as follows:
   * [__profiling__](libfqfft/profiling): functionality to profile running time, space usage, and number of field operations
   * [__tests__](libfqfft/tests): collection of GTests
   * [__tools__](libfqfft/tools): tools for evaluation domains
+* [__depends__](depends): dependency libraries
 * [__tutorials__](tutorials): tutorials for getting started with _libfqfft_
 
 ## Introduction
