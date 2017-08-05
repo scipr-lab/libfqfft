@@ -13,9 +13,9 @@ ___libfqfft___ is a C++ library for __Fast Fourier Transforms (FFTs)__ in __fini
   - [Arithmetic sequence](#arithmetic-sequence)
   - [Geometric sequence](#geometric-sequence)
 - [Performance](#performance)
-- [Profiling](#profiling)
-- [Testing](#testing)
 - [Build guide](#build-guide)
+- [Testing](#testing)
+- [Profiling](#profiling)
 - [Tutorials](#tutorials)
 - [References](#references)
 
@@ -124,55 +124,6 @@ NUMA node0 CPU(s):     0-7
 
 <p align="center"><img src="https://cloud.githubusercontent.com/assets/9260812/16982235/ab75a35a-4e23-11e6-97fd-0e4480f78b37.png" width="75%"></p>
 
-## Profiling
-
-__Warning:__ Profiling of memory usage is Linux-specific as it makes use of `getrusage()` from `<sys/resource.h>`. Compatibility of the `getrusage()` BSD syscall equivalent is kernel specific, such as with the `getrusage()` call listed under Darwin/OSX [XNU-3248.20.55](http://opensource.apple.com//source/xnu/xnu-3248.20.55/) in `bsd/kern/kern_resource.c`.
-
-The library includes functionality for profiling running time, memory usage, and number of field operations, and also for plotting the resulting data with [gnuplot](http://www.gnuplot.info/). All profiling and plotting activity is logged in the folder `libfqfft/profiling/logs`; logs are sorted into a directory hierarchy by profiling type and timestamp, respectively. The running time and memory usage profiling also supports multi-threading.
-
-To start the profiler, after [Compilation](#compilation), run ```./profiling_menu``` from the project root directory. Below is an explanation of profiling and plotting options.
-
-### Profiling
-
-Radix-2 FFT profiling numbers are in accordance to a vector of input size _n_. Polynomial multiplication computes two polynomials of degree _n_ by performing FFT on a resulting vector of size _2n_. For arithmetic and geometric sequence profiling, both evaluation and interpolation take in vectors of size _n_ and return a vector of degree _n_.
-
-Profiling options include:
-
-1. __Profiling type:__ Running time, memory usage, and/or fieldops count (any combination)
-2. __Domain type:__ All domains, radix-2 domains, or arithmetic/geometric sequence domains
-3. __Domain sizes:__ Preset small, preset large, or custom size
-
-Profiling results are saved in ```libfqfft/profiling/logs/{datetime}```.
-
-### Plotting
-
-Plotting uses __gnuplot__ scripts that are generalized for varying requests per profiling type. __Runtimes__ are plotted for all domains, comparing domain size to runtime in seconds. __Memory usage__ are plotted for all domains by comparing domain size to memory usage in kilobytes. __Field operations__ are plotted in two graphs: one comparing domain size to total operation counts, another comparing each type of operation - addition, subtraction, multiplication, division, and negation - with its respective count, for all domains.
-
-Plotting options include:
-
-1. __Profiling type:__ Plotting Runtime, Memory, or Field Operation Counts
-2. __File selection:__ Lists all previous profile logs of profiling type
-
-Plots are saved in the directory chosen at step 2, _File Selection_.
-
-## Testing
-
-The library uses Google Test for its unit tests. The unit tests cover polynomial evaluation, polynomial interpolation, Lagrange polynomials evaluation, and vanishing polynomial evaluation, for all evaluation domains. There are also unit tests for polynomial arithmetic, Kronecker substitution, and extended Euclidean GCD. The test suite is easily extensible to support a wide range of fields and domain sizes.
-
-To run the GTests for this library, after [Compilation](#compilation), run:
-
-```
-make check
-```
-
-This will compile and run the tests. Alternatively, from the `build` folder, one can also run `./libfqfft/gtests` after compiling.
-
-The unit tests are divided into three GTest files located under `libfqfft/tests`:
-
-1. __Evaluation domains__: `evaluation_domain_test.cpp`
-2. __Polynomial arithmetic__: `polynomial_arithmetic_test.cpp`
-3. __Kronecker substitution__: `kronecker_substitution_test.cpp`
-
 ## Build guide
 
 The library has the following dependencies:
@@ -255,6 +206,67 @@ make install
 ```
 
 Depending on the specified install location from the optional `-DCMAKE_INSTALL_PREFIX`, this will install the requisite headers into /install/path/include; so your application should be compiled using -I/install/path/include.
+
+## Testing
+
+The library uses Google Test for its unit tests. The unit tests cover polynomial evaluation, polynomial interpolation, Lagrange polynomials evaluation, and vanishing polynomial evaluation, for all evaluation domains. There are also unit tests for polynomial arithmetic, Kronecker substitution, and extended Euclidean GCD. The test suite is easily extensible to support a wide range of fields and domain sizes.
+
+To run the tests for this library, run:
+
+```
+make check
+```
+
+This will compile and run the tests. Alternatively, from the `build` folder, one can also run `./libfqfft/gtests` after compiling.
+
+The unit tests are divided into three GTest files located under `libfqfft/tests`:
+
+1. __Evaluation domains__: `evaluation_domain_test.cpp`
+2. __Polynomial arithmetic__: `polynomial_arithmetic_test.cpp`
+3. __Kronecker substitution__: `kronecker_substitution_test.cpp`
+
+## Profiling
+
+__Warning:__ Profiling of memory usage is Linux-specific as it makes use of `getrusage()` from `<sys/resource.h>`. Compatibility of the `getrusage()` BSD syscall equivalent is kernel specific, such as with the `getrusage()` call listed under Darwin/OSX [XNU-3248.20.55](http://opensource.apple.com//source/xnu/xnu-3248.20.55/) in `bsd/kern/kern_resource.c`.
+
+The library includes functionality for profiling running time, memory usage, and number of field operations, and also for plotting the resulting data with [gnuplot](http://www.gnuplot.info/). All profiling and plotting activity is logged in the folder `libfqfft/profiling/logs`; logs are sorted into a directory hierarchy by profiling type and timestamp, respectively. The running time and memory usage profiling also supports multi-threading.
+
+To compile the profiler, run:
+
+```
+make profiler profiling_menu
+```
+
+To start the profiler, navigate to the project root directory and run:
+
+```
+./profiling_menu
+```
+
+Below is an explanation of profiling and plotting options.
+
+### Profiling
+
+Radix-2 FFT profiling numbers are in accordance to a vector of input size _n_. Polynomial multiplication computes two polynomials of degree _n_ by performing FFT on a resulting vector of size _2n_. For arithmetic and geometric sequence profiling, both evaluation and interpolation take in vectors of size _n_ and return a vector of degree _n_.
+
+Profiling options include:
+
+1. __Profiling type:__ Running time, memory usage, and/or fieldops count (any combination)
+2. __Domain type:__ All domains, radix-2 domains, or arithmetic/geometric sequence domains
+3. __Domain sizes:__ Preset small, preset large, or custom size
+
+Profiling results are saved in ```libfqfft/profiling/logs/{datetime}```.
+
+### Plotting
+
+Plotting uses __gnuplot__ scripts that are generalized for varying requests per profiling type. __Runtimes__ are plotted for all domains, comparing domain size to runtime in seconds. __Memory usage__ are plotted for all domains by comparing domain size to memory usage in kilobytes. __Field operations__ are plotted in two graphs: one comparing domain size to total operation counts, another comparing each type of operation - addition, subtraction, multiplication, division, and negation - with its respective count, for all domains.
+
+Plotting options include:
+
+1. __Profiling type:__ Plotting Runtime, Memory, or Field Operation Counts
+2. __File selection:__ Lists all previous profile logs of profiling type
+
+Plots are saved in the directory chosen at step 2, _File Selection_.
 
 ## Tutorials
 
