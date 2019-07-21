@@ -30,15 +30,12 @@ bool extended_radix2_domain<FieldT>::valid_for_size(const size_t m)
 
         if (logm != (FieldT::s + 1))
             return false;
-
-        size_t small_m = m / 2;
-
-        if (small_m > FieldT::s)
-            return false;
-
-        if (m != (1u << small_m))
-            return false;
     }
+
+    size_t small_m = m / 2;
+
+    if( get_root_of_unity_will_throw<FieldT>(small_m) )
+        return false;
 
     return true;
 }

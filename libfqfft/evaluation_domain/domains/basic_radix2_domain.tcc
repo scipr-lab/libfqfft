@@ -35,10 +35,10 @@ bool basic_radix2_domain<FieldT>::valid_for_size(const size_t m)
 
         if (logm > FieldT::s)
             return false;
-
-        if (m != 1u << logm)
-            return false;
     }
+
+    if( get_root_of_unity_will_throw<FieldT>(m) )
+        return false;
 
     return true;
 }

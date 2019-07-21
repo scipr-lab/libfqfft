@@ -29,17 +29,13 @@ bool step_radix2_domain<FieldT>::valid_for_size(const size_t m)
     if (small_m != 1ul<<libff::log2(small_m))
         return false;
 
-    // Will `get_root_of_unity` throw?
-    if (!std::is_same<FieldT, libff::Double>::value)
-    {
-        const size_t logm = libff::log2(m);
+    // omega
+    if( get_root_of_unity_will_throw<FieldT>(1ul<<libff::log2(m)) )
+        return false;
 
-        if (m != (1u << logm))
-            return false;
-
-        if (logm > FieldT::s)
-            return false;
-    }
+    // small_omega
+    if( get_root_of_unity_will_throw<FieldT>(1ul<<libff::log2(small_m)) )
+        return false;
 
     return true;
 }
