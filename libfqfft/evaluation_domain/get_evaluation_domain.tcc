@@ -38,6 +38,35 @@ std::shared_ptr<evaluation_domain<FieldT> > get_evaluation_domain(const size_t m
     const size_t small = min_size - big;
     const size_t rounded_small = (1ul<<libff::log2(small));
 
+    if ( basic_radix2_domain<FieldT>::valid_for_size(min_size) ) {
+        result.reset(new basic_radix2_domain<FieldT>(min_size));        
+    }
+    else if ( extended_radix2_domain<FieldT>::valid_for_size(min_size) ) {
+        result.reset(new extended_radix2_domain<FieldT>(min_size));
+    }
+    else if ( step_radix2_domain<FieldT>::valid_for_size(min_size) ) {
+        result.reset(new step_radix2_domain<FieldT>(min_size));
+    }
+    else if ( basic_radix2_domain<FieldT>::valid_for_size(big + rounded_small) ) {
+        result.reset(new basic_radix2_domain<FieldT>(big + rounded_small));
+    }
+    else if ( extended_radix2_domain<FieldT>::valid_for_size(big + rounded_small) ) {
+        result.reset(new extended_radix2_domain<FieldT>(big + rounded_small));        
+    }
+    else if ( step_radix2_domain<FieldT>::valid_for_size(big + rounded_small) ) {
+        result.reset(new step_radix2_domain<FieldT>(big + rounded_small));
+    }
+    else if ( geometric_sequence_domain<FieldT>::valid_for_size(min_size) ) {
+        result.reset(new geometric_sequence_domain<FieldT>(min_size));
+    }
+    else if ( arithmetic_sequence_domain<FieldT>::valid_for_size(min_size) ) {
+        result.reset(new arithmetic_sequence_domain<FieldT>(min_size));
+    }
+    else {
+        throw DomainSizeException("get_evaluation_domain: no matching domain");
+    }
+
+    /*
     try { result.reset(new basic_radix2_domain<FieldT>(min_size)); }
     catch(...) { try { result.reset(new extended_radix2_domain<FieldT>(min_size)); }
     catch(...) { try { result.reset(new step_radix2_domain<FieldT>(min_size)); }
@@ -47,6 +76,7 @@ std::shared_ptr<evaluation_domain<FieldT> > get_evaluation_domain(const size_t m
     catch(...) { try { result.reset(new geometric_sequence_domain<FieldT>(min_size)); }
     catch(...) { try { result.reset(new arithmetic_sequence_domain<FieldT>(min_size)); }
     catch(...) { throw DomainSizeException("get_evaluation_domain: no matching domain"); }}}}}}}}
+    */
 
     return result;
 }

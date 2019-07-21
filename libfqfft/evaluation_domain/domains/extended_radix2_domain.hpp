@@ -27,6 +27,8 @@ public:
     FieldT omega;
     FieldT shift;
 
+    static bool valid_for_size(const size_t m);
+
     extended_radix2_domain(const size_t m);
 
     void FFT(std::vector<FieldT> &a);
