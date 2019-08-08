@@ -41,8 +41,8 @@ namespace libfqfft {
  Below we make use of pseudocode from [CLRS 2n Ed, pp. 864].
  Also, note that it's the caller's responsibility to multiply by 1/N.
  */
-template<typename FieldT>
-void _basic_serial_radix2_FFT(std::vector<FieldT> &a, const FieldT &omega)
+template<typename FieldT, typename GroupT>
+void _basic_serial_radix2_FFT(std::vector<GroupT> &a, const FieldT &omega)
 {
     const size_t n = a.size(), logn = log2(n);
     if (n != (1u << logn)) throw DomainSizeException("expected n == (1u << logn)");
@@ -67,9 +67,9 @@ void _basic_serial_radix2_FFT(std::vector<FieldT> &a, const FieldT &omega)
             FieldT w = FieldT::one();
             for (size_t j = 0; j < m; ++j)
             {
-                const FieldT t = w * a[k+j+m];
+                const GroupT t = w * a[k+j+m];
                 a[k+j+m] = a[k+j] - t;
-                a[k+j] += t;
+                a[k+j] = a[k+j] + t;
                 w *= w_m;
             }
         }
@@ -78,8 +78,11 @@ void _basic_serial_radix2_FFT(std::vector<FieldT> &a, const FieldT &omega)
     }
 }
 
-template<typename FieldT>
-void _basic_parallel_radix2_FFT_inner(std::vector<FieldT> &a, const FieldT &omega, const size_t log_cpus)
+template<typename FieldT, typename GroupT>
+void _basic_parallel_radix2_FFT_inner(
+    std::vector<GroupT> &a,
+    const FieldT &omega,
+    const size_t log_cpus)
 {
     const size_t num_cpus = 1ul<<log_cpus;
 
@@ -93,10 +96,10 @@ void _basic_parallel_radix2_FFT_inner(std::vector<FieldT> &a, const FieldT &omeg
         return;
     }
 
-    std::vector<std::vector<FieldT> > tmp(num_cpus);
+    std::vector<std::vector<GroupT> > tmp(num_cpus);
     for (size_t j = 0; j < num_cpus; ++j)
     {
-        tmp[j].resize(1ul<<(log_m-log_cpus), FieldT::zero());
+        tmp[j].resize(1ul<<(log_m-log_cpus), GroupT::zero());
     }
 
 #ifdef MULTICORE
@@ -114,7 +117,7 @@ void _basic_parallel_radix2_FFT_inner(std::vector<FieldT> &a, const FieldT &omeg
             {
                 // invariant: elt is omega^(j*idx)
                 const size_t idx = (i + (s<<(log_m - log_cpus))) % (1u << log_m);
-                tmp[j][i] += a[idx] * elt;
+                tmp[j][i] = tmp[j][i] + (elt * a[idx]);
                 elt *= omega_step;
             }
             elt *= omega_j;
@@ -144,8 +147,8 @@ void _basic_parallel_radix2_FFT_inner(std::vector<FieldT> &a, const FieldT &omeg
     }
 }
 
-template<typename FieldT>
-void _basic_parallel_radix2_FFT(std::vector<FieldT> &a, const FieldT &omega)
+template<typename FieldT, typename GroupT>
+void _basic_parallel_radix2_FFT(std::vector<GroupT> &a, const FieldT &omega)
 {
 #ifdef MULTICORE
     const size_t num_cpus = omp_get_max_threads();

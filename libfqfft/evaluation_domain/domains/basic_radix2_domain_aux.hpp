@@ -22,14 +22,14 @@ namespace libfqfft {
 /**
  * Compute the radix-2 FFT of the vector a over the set S={omega^{0},...,omega^{m-1}}.
  */
-template<typename FieldT>
-void _basic_radix2_FFT(std::vector<FieldT> &a, const FieldT &omega);
+template<typename FieldT, typename GroupT>
+void _basic_radix2_FFT(std::vector<GroupT> &a, const FieldT &omega);
 
 /**
  * A multi-thread version of _basic_radix2_FFT.
  */
-template<typename FieldT>
-void _parallel_basic_radix2_FFT(std::vector<FieldT> &a, const FieldT &omega);
+template<typename FieldT, typename GroupT>
+void _basic_parallel_radix2_FFT(std::vector<GroupT> &a, const FieldT &omega);
 
 /**
  * Translate the vector a to a coset defined by g.
