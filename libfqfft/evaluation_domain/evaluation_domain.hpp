@@ -47,6 +47,11 @@ public:
     evaluation_domain(const size_t m) : m(m) {};
 
     /**
+     * Destructor must be virtual.
+     */
+    virtual ~evaluation_domain() = 0;
+
+    /**
      * Get the idx-th element in S.
      */
     virtual FieldT get_domain_element(const size_t idx) = 0;
@@ -97,6 +102,11 @@ public:
      */
     virtual void divide_by_Z_on_coset(std::vector<FieldT> &P) = 0;
 };
+
+template<typename FieldT>
+evaluation_domain<FieldT>::~evaluation_domain()
+{
+}
 
 } // libfqfft
 
