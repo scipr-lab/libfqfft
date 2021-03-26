@@ -21,7 +21,7 @@
 #include <omp.h>
 #endif
 
-#include <libff/algebra/fields/field_utils.hpp>
+#include <libff/algebra/field_utils/field_utils.hpp>
 
 #include <libfqfft/tools/exceptions.hpp>
 
