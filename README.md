@@ -160,9 +160,10 @@ mkdir build && cd build
 cmake ..
 ```
 
-For macOS compilation, as `libprocps` is not compatible, create the Makefile with:
+For macOS compilation, `libprocps` is not compatible so it must be disabled. The OpenSSL path
+must also be provided, so create the Makefile with:
 ```
-cmake .. -DWITH_PROCPS=OFF
+cmake .. -DWITH_PROCPS=OFF -DOPENSSL_ROOT_DIR=$(brew --prefix openssl)
 ```
 
 #### Options
