@@ -14,7 +14,7 @@
 #ifndef BASIC_RADIX2_DOMAIN_TCC_
 #define BASIC_RADIX2_DOMAIN_TCC_
 
-#include <libff/algebra/fields/field_utils.hpp>
+#include <libff/algebra/field_utils/field_utils.hpp>
 #include <libff/common/double.hpp>
 #include <libff/common/utils.hpp>
 
