@@ -15,6 +15,7 @@
 #define BASIC_OPERATIONS_TCC_
 
 #include <algorithm>
+#include <functional>
 
 #include <libfqfft/evaluation_domain/domains/basic_radix2_domain_aux.hpp>
 #include <libfqfft/kronecker_substitution/kronecker_substitution.hpp>
@@ -148,7 +149,7 @@ void _polynomial_multiplication_on_fft(std::vector<FieldT> &c, const std::vector
 #endif
 
     const FieldT sconst = FieldT(n).inverse();
-    std::transform(c.begin(), c.end(), c.begin(), std::bind1st(std::multiplies<FieldT>(), sconst));
+    std::transform(c.begin(), c.end(), c.begin(), std::bind(std::multiplies<FieldT>(), sconst, std::placeholders::_1));
     _condense(c);
 }
 
