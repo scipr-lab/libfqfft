@@ -18,6 +18,29 @@
 namespace libfqfft {
 
 template<typename FieldT>
+bool extended_radix2_domain<FieldT>::valid_for_size(const size_t m)
+{
+    if ( m <= 1 )
+        return false;
+
+    // Will `get_root_of_unity` throw?
+    if (!std::is_same<FieldT, libff::Double>::value)
+    {
+        const size_t logm = libff::log2(m);
+
+        if (logm != (FieldT::s + 1))
+            return false;
+    }
+
+    size_t small_m = m / 2;
+
+    if( get_root_of_unity_will_throw<FieldT>(small_m) )
+        return false;
+
+    return true;
+}
+
+template<typename FieldT>
 extended_radix2_domain<FieldT>::extended_radix2_domain(const size_t m) : evaluation_domain<FieldT>(m)
 {
     if (m <= 1) throw InvalidSizeException("extended_radix2(): expected m > 1");

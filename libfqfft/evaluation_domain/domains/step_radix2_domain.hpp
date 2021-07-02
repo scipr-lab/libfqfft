@@ -29,6 +29,8 @@ public:
     FieldT big_omega;
     FieldT small_omega;
 
+    static bool valid_for_size(const size_t m);
+
     step_radix2_domain(const size_t m);
 
     void FFT(std::vector<FieldT> &a);
